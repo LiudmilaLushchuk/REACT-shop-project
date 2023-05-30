@@ -2,7 +2,7 @@ type ContentType = {
     text1: string
     text2: string
 }
-const Content = ({ text1, text2 }: ContentType) => {
+export const Content = ({ text1, text2 }: ContentType) => {
     return (
         <>
             <p className="red">{text1}</p>
@@ -10,5 +10,3 @@ const Content = ({ text1, text2 }: ContentType) => {
         </>
     )
 }
-
-export default Content
