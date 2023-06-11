@@ -52,11 +52,19 @@ class ProductListItem extends React.Component<Props, State> {
           <div className="product-features">Capacity: {capacity}</div>
           <div className="product-price">Price: $ {price}</div>
           <div className="product-quantity">
-            <Button variant="outlined" onClick={() => this.onDecrementClick()}>
+            <Button
+              variant="outlined"
+              onClick={() => this.onDecrementClick()}
+              disabled={this.state.count <= 1}
+            >
               -
             </Button>
             <TextField value={this.state.count} size="small" />
-            <Button variant="outlined" onClick={() => this.onIncrementClick()}>
+            <Button
+              variant="outlined"
+              onClick={() => this.onIncrementClick()}
+              disabled={this.state.count >= 10}
+            >
               +
             </Button>
           </div>
