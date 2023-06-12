@@ -1,12 +1,17 @@
-type Props = {}
+type Props = {
+  cartData: {
+    totalCount: number
+    totalPrice: number
+  }
+}
 
-const CartHeader = (props: Props) => {
-    return (
-        <div>
-            <div>0</div>
-            <div>$0</div>
-        </div>
-    )
+const CartHeader = ({ cartData }: Props) => {
+  return (
+    <div>
+      <div>{cartData.totalCount}</div>
+      <div>${cartData.totalPrice}</div>
+    </div>
+  )
 }
 
 export default CartHeader
