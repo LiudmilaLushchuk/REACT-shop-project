@@ -26,6 +26,20 @@ const ProductListItem = ({
   image,
 }: Props) => {
   const [count, setCount] = useState<number>(1)
+  const [color, setColor] = useState<string>('green')
+
+  const onIncrementClick = () => {
+    setCount((prevState) => prevState + 1)
+  }
+
+  const onDecrementClick = () => {
+    setCount((prevState) => prevState - 1)
+  }
+
+  const changeColor = () => {
+    setColor((prevState) => (prevState === 'green' ? 'red' : 'green'))
+  }
+
   return (
     <Card className="product" variant="outlined">
       <CardContent>
@@ -36,11 +50,27 @@ const ProductListItem = ({
         <div className="product-description">{description}</div>
         <div className="product-features">Type: {type}</div>
         <div className="product-features">Capacity: {capacity}</div>
+        <div>
+          Color: <span className={`${color}`}>{color}</span>
+        </div>
+        <button onClick={() => changeColor()}>Change color</button>
         <div className="product-price">Price: $ {price}</div>
         <div className="product-quantity">
-          <Button variant="outlined">-</Button>
+          <Button
+            variant="outlined"
+            onClick={() => onDecrementClick()}
+            disabled={count <= 1}
+          >
+            -
+          </Button>
           <TextField value={count} size="small" />
-          <Button variant="outlined">+</Button>
+          <Button
+            variant="outlined"
+            onClick={() => onIncrementClick()}
+            disabled={count >= 10}
+          >
+            +
+          </Button>
         </div>
         <CardActions className="btn-wrap">
           <Button variant="outlined">Add to cart</Button>
